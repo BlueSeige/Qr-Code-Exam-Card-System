@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Student Dashboard</h1>
+    <h2>Register Course</h2>
+    <form action="{{ url_for('register_course') }}" method="post">
+        <label for="course_code">Course Code:</label>
+        <input type="text" id="course_code" name="course_code" required>
+        <button type="submit">Register Course</button>
+    </form>
+
+    <h2>Registered Courses</h2>
+    <ul>
+        {% for exam_card in exam_cards %}
+            <li>{{ exam_card.course.course_code }} - {{ exam_card.course.course_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
